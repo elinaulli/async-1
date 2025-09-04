@@ -3,12 +3,6 @@ import json from "./parser";
 
 export default class GameSavingLoader {
   static load() {
-    return new Promise((resolve, reject) => {
-      resolve(read());
-    }).then((data) => {
-        return json(data);
-    }).then((value) => {
-        return JSON.parse(value);
-    })
-}
+    return read().then((response) => json(response)).then(value => JSON.parse(value));
+  }
 }
